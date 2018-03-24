@@ -18,27 +18,27 @@ namespace ConsoleApp1
 
                 Console.WriteLine("Enter the first number:");
                 string str = Console.ReadLine();
-                double firstNum = float.Parse(str);
+                float firstNum = float.Parse(str);
 
                 Console.WriteLine("Enter the second number:");
                 str = Console.ReadLine();
-                double secondNum = float.Parse(str);
+                float secondNum = float.Parse(str);
 
                 if (typeOfCalc.Equals("+"))
                 {
-                    Console.WriteLine("{0} + {1} = {2}", firstNum, secondNum, firstNum + secondNum);
+                    AddNumbers(firstNum, secondNum);
                 }
                 else if (typeOfCalc.Equals("-"))
                 {
-                    Console.WriteLine("{0} - {1} = {2}", firstNum, secondNum, firstNum - secondNum);
+                    SubNumbers(firstNum, secondNum);
                 }
                 else if (typeOfCalc.Equals("*"))
                 {
-                    Console.WriteLine("{0} * {1} = {2}", firstNum, secondNum, firstNum * secondNum);
+                    MultNumbers(firstNum, secondNum);
                 }
                 else if (typeOfCalc.Equals("/"))
                 {
-                    Console.WriteLine("{0} / {1} = {2}", firstNum, secondNum, firstNum / secondNum);
+                    DivNumbers(firstNum, secondNum);
                 }
 
                 Console.WriteLine("Would you like to make a new calculation?");
@@ -48,6 +48,26 @@ namespace ConsoleApp1
                 if (stayHere.Equals("N")) break;                                                            
                             
             } 
+        }
+
+        static void AddNumbers(float x, float y)
+        {
+            Console.WriteLine("{0} + {1} = {2}", x, y, x + y);
+        }
+
+        static void SubNumbers(float x, float y)
+        {
+            Console.WriteLine("{0} - {1} = {2}", x, y, x - y);
+        }
+
+        static void MultNumbers(float x, float y)
+        {
+            Console.WriteLine("{0} * {1} = {2}", x, y, x * y);
+        }
+
+        static void DivNumbers(float x, float y)
+        {
+            Console.WriteLine("{0} / {1} = {2}", x, y, x / y);
         }
     }
 }
