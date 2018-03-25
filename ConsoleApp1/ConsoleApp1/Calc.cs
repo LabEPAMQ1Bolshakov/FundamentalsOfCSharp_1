@@ -9,44 +9,65 @@ namespace ConsoleApp1
     class Calc
     {
         static void Main(string[] args)
-        {
-            string stayHere = "N";
-            while (stayHere != null)
+        {                     
+            string stayHere = null;
+            while (stayHere == null)
             {
                 Console.WriteLine("Choose the type of calculation. Enter +, or -, or *, or / :");
                 string typeOfCalc = Console.ReadLine();
-
-                Console.WriteLine("Enter the first number:");
-                string str = Console.ReadLine();
-                float firstNum = float.Parse(str);
-
-                Console.WriteLine("Enter the second number:");
-                str = Console.ReadLine();
-                float secondNum = float.Parse(str);
-
-                if (typeOfCalc.Equals("+"))
+                if (typeOfCalc.Equals("+") || typeOfCalc.Equals("-") || typeOfCalc.Equals("*") || typeOfCalc.Equals("/"))
                 {
-                    AddNumbers(firstNum, secondNum);
-                }
-                else if (typeOfCalc.Equals("-"))
-                {
-                    SubNumbers(firstNum, secondNum);
-                }
-                else if (typeOfCalc.Equals("*"))
-                {
-                    MultNumbers(firstNum, secondNum);
-                }
-                else if (typeOfCalc.Equals("/"))
-                {
-                    DivNumbers(firstNum, secondNum);
-                }
+                    Console.WriteLine("Enter the first number:");
+                    float firstNum;
+                    bool firstTest = float.TryParse(Console.ReadLine(), out firstNum);
+                    if (firstTest == true)
+                    {
+                        Console.WriteLine("Enter the second number:");
+                        float secondNum;
+                        bool secondTest = float.TryParse(Console.ReadLine(), out secondNum);
+                        if (secondTest == true)
+                        {
+                            if (typeOfCalc.Equals("+"))
+                            {
+                                AddNumbers(firstNum, secondNum);
+                            }
+                            else if (typeOfCalc.Equals("-"))
+                            {
+                                SubNumbers(firstNum, secondNum);
+                            }
+                            else if (typeOfCalc.Equals("*"))
+                            {
+                                MultNumbers(firstNum, secondNum);
+                            }
+                            else if (typeOfCalc.Equals("/"))
+                            {
+                                DivNumbers(firstNum, secondNum);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong input!");
+                        }
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wrong input!");
+                    }
 
-                Console.WriteLine("Would you like to make a new calculation?");
-                Console.WriteLine("Press Enter to continue");
-                Console.WriteLine("Enter N to exit");
-                stayHere = Console.ReadLine();
-                if (stayHere.Equals("N")) break;                                                            
-                            
+                    
+                    Console.WriteLine();
+                    Console.WriteLine("Would you like to make a new calculation?");
+                    Console.WriteLine("Press any key to continue");
+                    Console.WriteLine("Enter Escape to exit");
+                    
+                    if (Console.ReadKey().Key == ConsoleKey.Escape) break;
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input!");
+                }
             } 
         }
 
