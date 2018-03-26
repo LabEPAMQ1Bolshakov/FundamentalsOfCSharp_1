@@ -15,78 +15,77 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Choose the type of calculation. Enter +, or -, or *, or / :");
                 string typeOfCalc = Console.ReadLine();
-                if (typeOfCalc.Equals("+") || typeOfCalc.Equals("-") || typeOfCalc.Equals("*") || typeOfCalc.Equals("/"))
-                {
-                    Console.WriteLine("Enter the first number:");
-                    float firstNum;
-                    bool firstTest = float.TryParse(Console.ReadLine(), out firstNum);
-                    if (firstTest == true)
-                    {
-                        Console.WriteLine("Enter the second number:");
-                        float secondNum;
-                        bool secondTest = float.TryParse(Console.ReadLine(), out secondNum);
-                        if (secondTest == true)
-                        {
-                            if (typeOfCalc.Equals("+"))
-                            {
-                                AddNumbers(firstNum, secondNum);
-                            }
-                            else if (typeOfCalc.Equals("-"))
-                            {
-                                SubNumbers(firstNum, secondNum);
-                            }
-                            else if (typeOfCalc.Equals("*"))
-                            {
-                                MultNumbers(firstNum, secondNum);
-                            }
-                            else if (typeOfCalc.Equals("/"))
-                            {
-                                DivNumbers(firstNum, secondNum);
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Wrong input!");
-                        }
-                        
-                    }
-                    else
-                    {
-                        Console.WriteLine("Wrong input!");
-                    }
-
-                    
-                    Console.WriteLine();
-                    Console.WriteLine("Would you like to make a new calculation?");
-                    Console.WriteLine("Press any key to continue");
-                    Console.WriteLine("Enter Escape to exit");
-                    
-                    if (Console.ReadKey().Key == ConsoleKey.Escape) break;
-                    Console.WriteLine();
-                }
-                else
+                while ((typeOfCalc.Equals("+") || typeOfCalc.Equals("-") || typeOfCalc.Equals("*") || typeOfCalc.Equals("/")) == false)
                 {
                     Console.WriteLine("Wrong input!");
+                    Console.WriteLine("Choose the type of calculation. Enter +, or -, or *, or / :");
+                    typeOfCalc = Console.ReadLine();
                 }
+
+                Console.WriteLine("Enter the first number:");
+                double firstNum;
+                string str = Console.ReadLine();
+                while (Double.TryParse(str, out firstNum) == false)
+                {
+                    Console.WriteLine("Wrong input!");
+                    Console.WriteLine("Enter the first number:");
+                    str = Console.ReadLine();
+                }
+
+                Console.WriteLine("Enter the second number:");
+                double secondNum;
+                str = Console.ReadLine();
+                while (Double.TryParse(str, out secondNum) == false)
+                {
+                    Console.WriteLine("Wrong input!");
+                    Console.WriteLine("Enter the second number:");
+                    str = Console.ReadLine();
+                }
+                        
+                if (typeOfCalc.Equals("+"))
+                {
+                    AddNumbers(firstNum, secondNum);
+                }
+                else if (typeOfCalc.Equals("-"))
+                {
+                    SubNumbers(firstNum, secondNum);
+                }
+                else if (typeOfCalc.Equals("*"))
+                {
+                    MultNumbers(firstNum, secondNum);
+                }
+                else if (typeOfCalc.Equals("/"))
+                {
+                    DivNumbers(firstNum, secondNum);
+                }
+                        
+                    
+                Console.WriteLine();
+                Console.WriteLine("Would you like to make a new calculation?");
+                Console.WriteLine("Press any key to continue");
+                Console.WriteLine("Enter Escape to exit");
+                Console.WriteLine();
+                    
+                if (Console.ReadKey().Key == ConsoleKey.Escape) break;                              
             } 
         }
 
-        static void AddNumbers(float x, float y)
+        static void AddNumbers(double x, double y)
         {
             Console.WriteLine("{0} + {1} = {2}", x, y, x + y);
         }
 
-        static void SubNumbers(float x, float y)
+        static void SubNumbers(double x, double y)
         {
             Console.WriteLine("{0} - {1} = {2}", x, y, x - y);
         }
 
-        static void MultNumbers(float x, float y)
+        static void MultNumbers(double x, double y)
         {
             Console.WriteLine("{0} * {1} = {2}", x, y, x * y);
         }
 
-        static void DivNumbers(float x, float y)
+        static void DivNumbers(double x, double y)
         {
             Console.WriteLine("{0} / {1} = {2}", x, y, x / y);
         }
